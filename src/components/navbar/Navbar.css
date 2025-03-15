@@ -1,0 +1,223 @@
+/* Custom Font (Optional: Import from Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Base Styles */
+.NavClass {
+    background: rgba(24, 27, 82, 0.8); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Glass morphism effect */
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif; /* Modern font */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+}
+
+.Logo {
+    cursor: pointer;
+    margin-left: 10px;
+    color: #ED5E93;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700; /* Bold font */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.Logo:hover {
+    color: #ff7aa8;
+    transform: scale(1.05); /* Slight scale effect */
+}
+
+.nav-menu {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    list-style: none;
+    grid-gap: 20px; /* Increased gap for better spacing */
+    width: 50vw;
+    text-align: center;
+    justify-content: end;
+    margin-right: 2.3rem;
+}
+
+.nav-links {
+    text-decoration: none;
+    color: #ED5E93;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    position: relative;
+}
+
+.nav-links::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #ED5E93;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.nav-links:hover::after {
+    width: 100%; /* Underline effect on hover */
+}
+
+.nav-links:hover {
+    color: #FFF3FA;
+    background-color: rgba(237, 94, 147, 0.1); /* Subtle background on hover */
+}
+
+.activelink {
+    color: #FFF3FA;
+    background-color: rgba(237, 94, 147, 0.2); /* Active link background */
+    border-radius: 4px;
+}
+
+.button {
+    font-size: 1.2rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ED5E93, #ff7aa8); /* Gradient background */
+    color: #FFF3FA;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+    display: block;
+    text-decoration: none;
+    padding: 7px 11px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+    background: linear-gradient(135deg, #ff7aa8, #ED5E93); /* Gradient hover effect */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.Login {
+    font-size: 1.2rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #4CAF50, #66BB6A); /* Green gradient */
+    color: #FFF3FA;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+    display: block;
+    text-decoration: none;
+    padding: 7px 11px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.Login:hover {
+    background: linear-gradient(135deg, #66BB6A, #4CAF50); /* Gradient hover effect */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.Menu-Icon {
+    display: none;
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 900px) {
+    .NavClass {
+        position: relative;
+    }
+
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 510px;
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+        background: rgba(24, 27, 82, 0.9); /* Semi-transparent background */
+        backdrop-filter: blur(10px); /* Glass morphism effect */
+    }
+
+    .nav-menu.active {
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 20;
+    }
+
+    .nav-links {
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+    }
+
+    .nav-links:hover {
+        background-color: rgba(237, 94, 147, 0.1); /* Subtle hover effect */
+        color: #FFF3FA;
+    }
+
+    .Logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(25%, 50%);
+    }
+
+    .button {
+        position: absolute;
+        transform: translate(80%);
+    }
+
+    .Menu-Icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 60%);
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: #FFF3FA;
+    }
+
+    .nav-links-mobile {
+        display: block;
+        text-align: center;
+        padding: 1.2rem;
+        margin: 1rem auto;
+        width: 80%;
+        font-size: 1.5rem;
+        font-weight: 600;
+        background: linear-gradient(135deg, #ED5E93, #ff7aa8); /* Gradient background */
+        color: #FFF3FA;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .nav-links-mobile:hover {
+        background: linear-gradient(135deg, #ff7aa8, #ED5E93); /* Gradient hover effect */
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .button {
+        display: none;
+    }
+
+    .fa-times, .fa-bars {
+        color: #FFF3FA;
+    }
+}
