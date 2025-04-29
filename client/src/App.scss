@@ -1,0 +1,29 @@
+@import './styles/variables.scss';
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  background-color: $background;
+  // padding-top: 70px; // Height of the navbar
+}
+
+// Add smooth scrolling to the whole app
+html {
+  scroll-behavior: smooth;
+}
+
+// Hide scrollbar for Chrome, Safari and Opera
+::-webkit-scrollbar {
+  display: none;
+}
+
+// Hide scrollbar for IE, Edge and Firefox
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

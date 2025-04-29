@@ -1,0 +1,69 @@
+@import './breakpoints.scss';
+@import './variables.scss';
+
+.title-list {
+  margin: 40px 100px;
+  color: $blue;
+
+  @include sm {
+    margin: 40px 50px;
+  }
+}
+
+.delete-success-message {
+  max-width: 600px;
+  margin: 0 auto 20px;
+  padding: $spacing-md;
+  background-color: rgba($success, 0.1);
+  color: $success;
+  border: 1px solid $success;
+  border-radius: $border-radius-md;
+  text-align: center;
+  font-weight: 600;
+  animation: fadeIn 0.5s ease;
+}
+
+.list {
+  padding: 0 100px 120px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+
+  @include xl {
+    padding: 0 20px 120px;
+  }
+
+  .empty-list {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: $spacing-xl;
+    background-color: rgba($surface, 0.7);
+    border: 1px solid rgba($text-secondary, 0.1);
+    border-radius: $border-radius-lg;
+    text-align: center;
+    @include shadow-sm;
+
+    h2 {
+      color: $text-primary;
+      margin-bottom: $spacing-md;
+    }
+
+    p {
+      color: $text-secondary;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

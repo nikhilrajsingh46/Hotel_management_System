@@ -1,0 +1,100 @@
+@import './variables.scss';
+@import './breakpoints.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  background-color: $background;
+  color: $text-primary;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: inherit;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+
+  @include sm {
+    padding: 0 $spacing-md;
+  }
+}
+
+.page {
+  min-height: calc(100vh - 70px);
+  padding: $spacing-xl 0;
+
+  @include sm {
+    padding: $spacing-lg 0;
+  }
+}
+
+.section {
+  margin: $spacing-xl 0;
+
+  @include sm {
+    margin: $spacing-lg 0;
+  }
+
+  &-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: $spacing-lg;
+    text-align: center;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $spacing-lg;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.error {
+  color: $danger;
+  font-size: 0.9rem;
+  margin-top: $spacing-xs;
+}
+
+.success {
+  color: $success;
+  font-size: 0.9rem;
+  margin-top: $spacing-xs;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}

@@ -1,0 +1,206 @@
+@import './variables.scss';
+@import './breakpoints.scss';
+
+.about-page {
+  padding: $spacing-xl 0;
+
+  .about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+
+    @include sm {
+      padding: 0 $spacing-md;
+    }
+  }
+
+  .about-header {
+    text-align: center;
+    margin-bottom: $spacing-xl * 1.5;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: $spacing-md;
+      background: linear-gradient(135deg, $primary, darken($primary, 20%));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: $text-secondary;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl * 2;
+  }
+
+  .about-section {
+    background-color: rgba($surface, 0.7);
+    padding: $spacing-xl;
+    border-radius: $border-radius-lg;
+    @include shadow-md;
+    border: 1px solid rgba($text-secondary, 0.1);
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: $spacing-lg;
+      color: $primary;
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(135deg, $primary, darken($primary, 20%));
+        border-radius: 3px;
+      }
+    }
+
+    p {
+      color: $text-secondary;
+      line-height: 1.7;
+      margin-bottom: $spacing-md;
+      font-size: 1.05rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .mission-values {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: $spacing-lg;
+      margin-top: $spacing-xl;
+
+      @include md {
+        grid-template-columns: 1fr;
+      }
+
+      .value-item {
+        background-color: rgba($background, 0.3);
+        padding: $spacing-lg;
+        border-radius: $border-radius-md;
+        @include shadow-sm;
+        border: 1px solid rgba($primary, 0.1);
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+          @include shadow-md;
+          border-color: rgba($primary, 0.3);
+        }
+
+        h3 {
+          font-size: 1.3rem;
+          margin-bottom: $spacing-sm;
+          color: $text-primary;
+        }
+
+        p {
+          margin-bottom: 0;
+          color: $text-secondary;
+        }
+      }
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: $spacing-lg;
+      margin-top: $spacing-xl;
+
+      @include md {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include sm {
+        grid-template-columns: 1fr;
+      }
+
+      .team-member {
+        text-align: center;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        img {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-bottom: $spacing-md;
+          border: 3px solid $primary;
+          @include shadow-md;
+        }
+
+        h3 {
+          font-size: 1.3rem;
+          margin-bottom: $spacing-xs;
+          color: $text-primary;
+        }
+
+        p {
+          color: $primary;
+          font-weight: 600;
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &.cta-section {
+      text-align: center;
+      background: linear-gradient(135deg, rgba($primary, 0.1), rgba(darken($primary, 20%), 0.1));
+
+      p {
+        max-width: 700px;
+        margin: 0 auto $spacing-lg;
+      }
+
+      .cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: $spacing-md;
+        margin-top: $spacing-lg;
+
+        @include sm {
+          flex-direction: column;
+          width: 100%;
+          max-width: 300px;
+          margin: $spacing-lg auto 0;
+        }
+
+        .cta-button {
+          @include buttonStyle;
+          text-decoration: none;
+          padding: $spacing-sm $spacing-xl;
+          font-size: 1rem;
+
+          &.secondary {
+            background-color: transparent;
+            border: 2px solid $primary;
+            color: $text-primary;
+
+            &:hover {
+              background-color: rgba($primary, 0.1);
+              color: $primary;
+            }
+          }
+        }
+      }
+    }
+  }
+}

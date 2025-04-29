@@ -1,0 +1,422 @@
+// Variables
+$primary-color: #4a6cf7;
+$secondary-color: #6c757d;
+$success-color: #28a745;
+$danger-color: #dc3545;
+$warning-color: #ffc107;
+$info-color: #17a2b8;
+$light-color: #f8f9fa;
+$dark-color: #343a40;
+$white: #ffffff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$border-radius: 0.25rem;
+$box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+$transition: all 0.3s ease;
+
+// Mixins
+@mixin flex($direction: row, $justify: flex-start, $align: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin grid($columns: 1fr, $gap: 1rem) {
+  display: grid;
+  grid-template-columns: $columns;
+  gap: $gap;
+}
+
+// Base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: $gray-800;
+  background-color: $gray-100;
+  line-height: 1.5;
+}
+
+// Admin Layout
+.admin-container {
+  @include flex();
+  min-height: 100vh;
+}
+
+// Sidebar
+.admin-sidebar {
+  width: 260px;
+  background-color: $white;
+  border-right: 1px solid $gray-200;
+  @include flex(column, flex-start, stretch);
+  position: fixed;
+  height: 100vh;
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.admin-logo {
+  padding: 1.5rem;
+  border-bottom: 1px solid $gray-200;
+  
+  h2 {
+    color: $primary-color;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+}
+
+.admin-nav {
+  flex: 1;
+  padding: 1rem 0;
+  overflow-y: auto;
+  
+  ul {
+    list-style: none;
+    
+    li {
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      transition: $transition;
+      border-left: 3px solid transparent;
+      font-weight: 500;
+      
+      &:hover {
+        background-color: rgba($primary-color, 0.05);
+        color: $primary-color;
+      }
+      
+      &.active {
+        background-color: rgba($primary-color, 0.1);
+        color: $primary-color;
+        border-left-color: $primary-color;
+      }
+    }
+  }
+}
+
+.admin-user-info {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid $gray-200;
+  @include flex(row, flex-start, center);
+  gap: 0.75rem;
+}
+
+.admin-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: $gray-300;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    @include flex(row, center, center);
+    background-color: $primary-color;
+    color: $white;
+    font-weight: 600;
+  }
+}
+
+.admin-user-details {
+  h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  p {
+    font-size: 0.75rem;
+    color: $gray-600;
+  }
+}
+
+// Main Content
+.admin-main {
+  flex: 1;
+  margin-left: 260px;
+  padding: 1.5rem;
+  background-color: $gray-100;
+  min-height: 100vh;
+}
+
+.admin-header {
+  @include flex(row, space-between, center);
+  margin-bottom: 1.5rem;
+  
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $gray-800;
+  }
+}
+
+.admin-actions {
+  @include flex(row, flex-end, center);
+  gap: 0.75rem;
+  
+  .refresh-btn {
+    padding: 0.5rem 1rem;
+    background-color: $white;
+    border: 1px solid $gray-300;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: $transition;
+    font-weight: 500;
+    
+    &:hover {
+      background-color: $gray-100;
+    }
+  }
+}
+
+// Dashboard Content
+.dashboard-content {
+  @include flex(column);
+  gap: 1.5rem;
+}
+
+.stats-cards {
+  @include grid(repeat(auto-fill, minmax(240px, 1fr)), 1.5rem);
+}
+
+.chart-container {
+  @include grid(repeat(auto-fill, minmax(500px, 1fr)), 1.5rem);
+  margin-bottom: 1.5rem;
+}
+
+.chart-card {
+  background-color: $white;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: $gray-700;
+  }
+}
+
+.recent-activity {
+  background-color: $white;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: $gray-700;
+  }
+}
+
+.activity-list {
+  @include flex(column);
+  gap: 1rem;
+}
+
+.activity-item {
+  @include flex(row, flex-start, center);
+  gap: 1rem;
+  padding: 0.75rem;
+  border-radius: $border-radius;
+  background-color: #ffff;
+  transition: $transition;
+  
+  &:hover {
+    background-color: $gray-100;
+  }
+}
+
+.activity-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  @include flex(row, center, center);
+  
+  &.booking {
+    background-color: rgba($primary-color, 0.1);
+    color: $primary-color;
+  }
+  
+  &.user {
+    background-color: rgba($success-color, 0.1);
+    color: $success-color;
+  }
+  
+  &.property {
+    background-color: rgba($warning-color, 0.1);
+    color: $warning-color;
+  }
+  
+  &.feedback {
+    background-color: rgba($info-color, 0.1);
+    color: $info-color;
+  }
+}
+
+.activity-details {
+  flex: 1;
+  
+  p {
+    margin-bottom: 0.25rem;
+  }
+  
+  .activity-time {
+    font-size: 0.75rem;
+    color: $gray-600;
+  }
+}
+
+// Loading State
+.admin-loading {
+  @include flex(column, center, center);
+  height: 100vh;
+  width: 100%;
+  
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba($primary-color, 0.1);
+    border-radius: 50%;
+    border-top-color: $primary-color;
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: $gray-600;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Table Styles
+.data-table {
+  width: 100%;
+  background-color: $white;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid $gray-200;
+    }
+    
+    th {
+      background-color: #ffff;
+      font-weight: 600;
+      color: $gray-700;
+    }
+    
+    tr:last-child td {
+      border-bottom: none;
+    }
+    
+    tr:hover td {
+      background-color: #ffff;
+    }
+  }
+}
+
+.table-actions {
+  @include flex(row, flex-start, center);
+  gap: 0.5rem;
+  
+  button {
+    padding: 0.25rem 0.5rem;
+    border-radius: $border-radius;
+    border: none;
+    cursor: pointer;
+    transition: $transition;
+    font-size: 0.875rem;
+    
+    &.edit-btn {
+      background-color: rgba($warning-color, 0.1);
+      color: $warning-color;
+      
+      &:hover {
+        background-color: rgba($warning-color, 0.2);
+      }
+    }
+    
+    &.delete-btn {
+      background-color: rgba($danger-color, 0.1);
+      color: $danger-color;
+      
+      &:hover {
+        background-color: rgba($danger-color, 0.2);
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 992px) {
+  .admin-sidebar {
+    width: 220px;
+  }
+  
+  .admin-main {
+    margin-left: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-sidebar {
+    width: 70px;
+    
+    .admin-logo h2, .admin-user-details {
+      display: none;
+    }
+    
+    .admin-nav ul li {
+      padding: 0.75rem;
+      display: flex;
+      justify-content: center;
+    }
+  }
+  
+  .admin-main {
+    margin-left: 70px;
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-sidebar {
+    width: 0;
+    transform: translateX(-100%);
+  }
+  
+  .admin-main {
+    margin-left: 0;
+  }
+}

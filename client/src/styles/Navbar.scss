@@ -1,0 +1,246 @@
+@import './variables.scss';
+@import './breakpoints.scss';
+
+.navbar {
+  height: 70px;
+  background: linear-gradient(to right, #2d3748, #1e3c64);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  @include shadow-sm;
+  border-bottom: 1px solid rgba($text-secondary, 0.2);
+
+  .navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 $spacing-lg;
+
+    @include sm {
+      padding: 0 $spacing-md;
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: $spacing-xs;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: 700;
+
+        svg {
+          color: $primary;
+          font-size: 1.8rem;
+          transition: transform 0.3s ease;
+        }
+
+        span {
+          background: linear-gradient(135deg, $primary, darken($primary, 20%));
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          transition: all 0.3s ease;
+        }
+
+        &:hover {
+          svg {
+            transform: scale(1.1);
+          }
+
+          span {
+            text-shadow: 0 0 20px rgba($primary, 0.3);
+          }
+        }
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: $spacing-md;
+        margin-left: $spacing-md;
+
+        @include md {
+          display: none;
+        }
+
+        .nav-link {
+          display: flex;
+          align-items: center;
+          gap: $spacing-xs;
+          color: $text-primary;
+          text-decoration: none;
+          font-weight: 500;
+          padding: $spacing-xs $spacing-sm;
+          border-radius: 20px;
+          transition: all 0.3s ease;
+
+          svg {
+            color: $primary;
+            font-size: 1.2rem;
+          }
+
+          &:hover {
+            background-color: rgba($primary, 0.1);
+            color: $primary;
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      padding: $spacing-xs $spacing-md;
+      border: 1px solid rgba($text-secondary, 0.2);
+      border-radius: 30px;
+      background-color: $background;
+      transition: all 0.3s ease;
+      max-width: 400px;
+      width: 100%;
+
+      @include lg {
+        max-width: 300px;
+      }
+
+      @include md {
+        display: none;
+      }
+
+      &:focus-within {
+        border-color: $primary;
+        @include shadow-sm;
+      }
+
+      input {
+        flex: 1;
+        border: none;
+        outline: none;
+        background: none;
+        padding: $spacing-xs;
+        font-size: 0.9rem;
+        color: $text-primary;
+
+        &::placeholder {
+          color: $text-secondary;
+        }
+      }
+
+      .search-icon {
+        color: $primary;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      gap: $spacing-md;
+      position: relative;
+
+      .host-btn {
+        font-weight: 600;
+        color: $text-primary;
+        text-decoration: none;
+        padding: $spacing-xs $spacing-sm;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+
+        @include sm {
+          display: none;
+        }
+
+        &:hover {
+          background-color: rgba($primary, 0.1);
+          color: $primary;
+        }
+      }
+
+      .user {
+        display: flex;
+        align-items: center;
+        gap: $spacing-xs;
+        padding: $spacing-xs $spacing-sm;
+        border: 1px solid rgba($text-secondary, 0.2);
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+
+        &:hover {
+          @include shadow-sm;
+          border-color: $primary;
+        }
+
+        svg {
+          color: $text-secondary;
+          font-size: 1.2rem;
+        }
+
+        img {
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 2px solid $primary;
+        }
+      }
+
+      .menu {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: $surface;
+        border-radius: $border-radius-md;
+        @include shadow-lg;
+        overflow: hidden;
+        min-width: 200px;
+        animation: menuAppear 0.3s ease;
+        z-index: 1100;
+
+        @include sm {
+          right: 0;
+        }
+
+        .menu-item {
+          display: block;
+          padding: $spacing-sm $spacing-md;
+          text-decoration: none;
+          color: $text-primary;
+          font-weight: 500;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: rgba($primary, 0.1);
+            color: $primary;
+            padding-left: $spacing-lg;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes menuAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,68 @@
+.user-profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    
+    .user-profile-loading,
+    .user-profile-error {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      text-align: center;
+      
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+      
+      button {
+        padding: 0.5rem 1rem;
+        background-color: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        
+        &:hover {
+          background-color: #3a80d2;
+        }
+      }
+    }
+    
+    .profile-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin: 1rem 0 2rem;
+      gap: 1rem;
+      
+      button {
+        padding: 0.5rem 1.5rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        
+        &.edit-button {
+          background-color: #4a90e2;
+          color: white;
+          
+          &:hover {
+            background-color: #3a80d2;
+          }
+        }
+        
+        &.delete-button {
+          background-color: #f44336;
+          color: white;
+          
+          &:hover {
+            background-color: #d32f2f;
+          }
+        }
+      }
+    }
+  }
+  
